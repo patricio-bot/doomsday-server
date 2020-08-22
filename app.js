@@ -11,6 +11,8 @@ const MongoStore = require("connect-mongo")(session);
 const cors = require("cors");
 
 const auth = require("./routes/auth");
+const userRouter = require('./routes/user');
+const taskRouter = require('./routes/task');
 
 // MONGOOSE CONNECTION
 mongoose
@@ -18,7 +20,8 @@ mongoose
     useUnifiedTopology: true,
     keepAlive: true,
     useNewUrlParser: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useFindAndModify: false
   })
   .then(() => console.log(`Connected to database`))
   .catch((err) => console.error(err));
@@ -66,7 +69,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // ROUTER MIDDLEWARE
 app.use("/auth", auth);
-
+app.use('/user', userRouter);
+app.use('/task', taskRouter);
 // ERROR HANDLING
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

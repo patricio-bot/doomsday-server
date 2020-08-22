@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const taskSchema = new Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
-    punctuation: { type: Number, required: true },
-    kind: { type: String, enum: [true, false] },
+    score: { type: Number, min: 1, max: 10, required: true },
+    kind: { type: String, enum: ['good', 'bad'] },
     image: { type: String },
     author: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }]
 }, {

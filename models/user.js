@@ -10,7 +10,9 @@ const userSchema = new Schema({
   image: String,
   tasksCreated: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Task' }],
   hasSins: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Sin' }],
-  status: { type: String, enum: ['alive', 'dead'] }
+  status: { type: String, enum: ['alive', 'dead'] },
+  age: { type: Number },
+  birthDate: { type: Date }
 }, {
   timestamps: {
     createdAt: 'created_at',

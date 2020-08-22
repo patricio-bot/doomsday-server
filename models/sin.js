@@ -6,7 +6,8 @@ const sinSchema = new Schema({
     title: String,
     symptoms: String,
     image: String,
-    causes: String
+    causes: [String]
+
 }, {
     timestamps: {
         createdAt: 'created_at',
