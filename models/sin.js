@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 
 const sinSchema = new Schema({
-    title: String,
-    symptoms: String,
+    disease: String,
+    description: String,
     image: String,
     causes: [String]
 

@@ -7,13 +7,17 @@ const User = require('../models/user');
 const Task = require('../models/task');
 const axios = require('axios');
 const getLifeExpectancy = require('../helpers/getLifeExpectancy');
-
+const getDisease = require('../helpers/getDisease');
+const generateSins = require('../helpers/generateSins')
 const { route } = require('./auth');
+const { isLoggedIn } = require('../helpers/middlewares');
 
 
 
 router.get('/', (req, res, next) => {
+    console.log('aqui');
     User.find()
+        .populate('tasksCreated')
         .then(users => {
             res.status(200).json(users)
 
@@ -37,8 +41,10 @@ const sinDictionary = {
     'Underweight': -6
 
 }
-router.post('/data', (req, res, next) => {
-    const { country, height, weight, isSmoker, isDrinker, age } = req.body;
+router.put('/edit', (req, res, next) => {
+    //const userId = req.session.currentUser._id;
+    const { _id } = req.session.currentUser;
+    const { firstName, lastName, gender, image, height, weight, age, isDrinker, isSmoker, country, description } = req.body;
     axios({
         "method": "GET",
         "url": "https://fitness-calculator.p.rapidapi.com/bmi",
@@ -57,20 +63,44 @@ router.post('/data', (req, res, next) => {
             const { bmi, health } = response.data;
             const yearsRemaining = getLifeExpectancy(country, age);
             const healthYears = sinDictionary[health];
+            const userDisease = getDisease(response.data.health);
             let badHabitsYears = 0;
             if (isSmoker) badHabitsYears += sinDictionary.isSmoker;
 
             if (isDrinker) badHabitsYears += sinDictionary.isDrinker;
             const yearsRemainingTotal = yearsRemaining + badHabitsYears + healthYears;
-            res.json({ yearsRemainingTotal })
-            //console.log({ yearsRemaining, healthYears, badHabitsYears, yearsRemainingTotal, health, bmi });
+
+
+            let now = new Date().getTime();
+
+            let future = Math.floor(yearsRemainingTotal * 31536000000);
+            let countDownDate = future - now;
+            let days = Math.floor(countDownDate / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((countDownDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((countDownDate % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((countDownDate % (1000 * 60)) / 1000);
+
+            console.log({ yearsRemaining, healthYears, badHabitsYears, yearsRemainingTotal, health, bmi, countDownDate, now, future });
+            console.log(`${days} d ${hours} h ${minutes} m ${seconds} s`);
+            console.log(userDisease);
+
+            const hasSins = generateSins(isSmoker, isDrinker, health)
+            console.log(hasSins);
+            User.findByIdAndUpdate(_id, { yearsRemaining: yearsRemainingTotal, firstName, lastName, gender, image, height, weight, age, isDrinker, isSmoker, country, description, health, hasSins }, { new: true })
+                .then((userUpdated) => {
+                    res.status(200).json(userUpdated)
+                })
+
+
         })
+
         .catch((error) => {
             console.log(error)
         })
 });
-router.get('/:id', (req, res, next) => {
-    let userId = req.params.id;
+router.get('/profile', isLoggedIn(), (req, res, next) => {
+
+    let userId = req.session.currentUser._id;
     User.findById(userId)
         .populate("hasSins, tasksCreated")
         .then((user) => {
@@ -80,18 +110,30 @@ router.get('/:id', (req, res, next) => {
             next(createError(error));
         });
 });
-router.put('/edit', (req, res, next) => {
-    const userId = req.session.currentUser._id;
-    const { firstName, lastName, gender, image } = req.body;
+router.get('/:id', (req, res, next) => {
+    const { id } = req.params;
+    User.findById(id)
+        .populate("hasSins, tasksCreated")
+        .then((user) => {
+            res.status(200).json(user)
+        })
+        .catch(error => {
+            next(createError(error));
+        });
+});
+/* router.put('/edit', (req, res, next) => {
+    const { _id } = req.session.currentUser;
+    const { firstName, lastName, gender, image, height, weight, age, isDrinker, isSmoker, country, description } = req.body;
 
-    User.findByIdAndUpdate(userId, { firstName, lastName, gender, image }, { new: true })
+    User.findByIdAndUpdate(_id, { firstName, lastName, gender, image, height, weight, age, isDrinker, isSmoker, country, description }, { new: true })
         .then((userUpdated) => {
+            console.log('user updated------>', userUpdated);
             req.session.currentUser = userUpdated;
             res.status(200).json(userUpdated);
         })
         .catch(error => {
             next(error);
         });
-});
+}); */
 
 module.exports = router;

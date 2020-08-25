@@ -3,9 +3,15 @@ const router = express.Router();
 const createError = require('http-errors');
 const User = require('../models/user');
 const Task = require('../models/task');
+const {
+    isLoggedIn,
+    isNotLoggedIn,
+    validationLoggin,
+    validationSignup
+} = require("../helpers/middlewares");
 
+router.post('/add', isLoggedIn(), (req, res, next) => {
 
-router.post('/add', (req, res, next) => {
     const { title, description, score, image, kind } = req.body;
 
     const userId = req.session.currentUser._id;

@@ -1,0 +1,91 @@
+[{
+    "disease": "Osteoarthristis",
+    "description": "Osteoarthritis is the most common form of arthritis, affecting millions of people worldwide. It occurs when the protective cartilage that cushions the ends of your bones wears down over time.",
+    "causes": ["Obese Class II", "Obese Class I", "Obese Class III", "Overweight"]
+  },
+  {
+    "disease": "Hypoglycemia",
+    "description": "Hypoglycemia is a condition in which your blood sugar (glucose) level is lower than normal. Glucose is your body's main energy source. Hypoglycemia is often related to diabetes treatment. But other drugs and a variety of conditions — many rare — can cause low blood sugar in people who don't have diabetes.",
+    "causes": ["isDrinker", "Severe Thinness", "Mild Thinness"]
+  },
+  {
+    "disease": "Diabetes",
+    "description": "Diabetes is a disease that occurs when your blood glucose, also called blood sugar, is too high. Blood glucose is your main source of energy and comes from the food you eat. Insulin, a hormone made by the pancreas, helps glucose from food get into your cells to be used for energy.",
+    "causes": ["Obese Class II", "Obese Class I", "Obese Class III", "Overweight"]
+  },
+  {
+    "disease": "Hypertension",
+    "description": "Hypertension (HTN or HT), also known as high blood pressure (HBP), is a long-term medical condition in which the blood pressure in the arteries is persistently elevated. High blood pressure typically does not cause symptoms.",
+    "causes": ["Overweight", "Obese Class I", "Obese Class II", "Obese Class III"]
+  },
+  {
+    "disease": "Common Cold",
+    "description": "The common cold is a viral infection of your nose and throat (upper respiratory tract). It's usually harmless, although it might not feel that way. Many types of viruses can cause a common cold.",
+    "causes": ["Normal"]
+  },
+  {
+    "disease": "Cervical spondylosis",
+    "description": "Cervical spondylosis is a general term for age-related wear and tear affecting the spinal disks in your neck. As the disks dehydrate and shrink, signs of osteoarthritis develop, including bony projections along the edges of bones (bone spurs).",
+    "causes": ["Obese Class II", "Overweight", "Obese Class III", "Obese Class I"]
+  },
+  {
+    "disease": "Hyperthyroidism",
+    "description": "Hyperthyroidism (overactive thyroid) occurs when your thyroid gland produces too much of the hormone thyroxine. Hyperthyroidism can accelerate your body's metabolism, causing unintentional weight loss and a rapid or irregular heartbeat.",
+    "causes": ["Severe Thinness", "Mild Thinness", "Moderate Thinness"]
+  },
+  {
+    "disease": "AIDS",
+    "description": "Acquired immunodeficiency syndrome (AIDS) is a chronic, potentially life-threatening condition caused by the human immunodeficiency virus (HIV). By damaging your immune system, HIV interferes with your body's ability to fight infection and disease.",
+    "causes": ["Normal"]
+  },
+  {
+    "disease": "Paralysis (brain hemorrhage)",
+    "description": "Intracerebral hemorrhage (ICH) is when blood suddenly bursts into brain tissue, causing damage to your brain. Symptoms usually appear suddenly during ICH. They include headache, weakness, confusion, and paralysis, particularly on one side of your body.",
+    "causes": ["Obese Class II", "Obese Class I", "Obese Class III", "Overweight"]
+  },
+  {
+    "disease": "Bronchial Asthma",
+    "description": "Bronchial asthma is a medical condition which causes the airway path of the lungs to swell and narrow. Due to this swelling, the air path produces excess mucus making it hard to breathe, which results in coughing, short breath, and wheezing. The disease is chronic and interferes with daily working.",
+    "causes": ["isSmoker"]
+  },
+  {
+    "disease": "Alcoholic hepatitis",
+    "description": "Alcoholic hepatitis is a diseased, inflammatory condition of the liver caused by heavy alcohol consumption over an extended period of time. It's also aggravated by binge drinking and ongoing alcohol use. If you develop this condition, you must stop drinking alcohol",
+    "causes": ["isDrinker"]
+  },
+  {
+    "disease": "Jaundice",
+    "description": "Yellow staining of the skin and sclerae (the whites of the eyes) by abnormally high blood levels of the bile pigment bilirubin. The yellowing extends to other tissues and body fluids. Jaundice was once called the \"morbus regius\" (the regal disease) in the belief that only the touch of a king could cure it",
+    "causes": ["Severe Thinness", "Mild Thinness"]
+  },
+  {
+    "disease": "Heart attack",
+    "description": "The death of heart muscle due to the loss of blood supply. The loss of blood supply is usually caused by a complete blockage of a coronary artery, one of the arteries that supplies blood to the heart muscle.",
+    "causes": ["Obese Class II", "Obese Class I", "Obese Class III", "Overweight", "isSmoker"]
+  },
+  {
+    "disease": "Gastroenteritis",
+    "description": "Gastroenteritis is an inflammation of the digestive tract, particularly the stomach, and large and small intestines. Viral and bacterial gastroenteritis are intestinal infections associated with symptoms of diarrhea , abdominal cramps, nausea , and vomiting .",
+    "causes": ["isSmoker", "isDrinker"]
+  },
+  {
+    "disease": "Tuberculosis",
+    "description": "Tuberculosis (TB) is an infectious disease usually caused by Mycobacterium tuberculosis (MTB) bacteria. Tuberculosis generally affects the lungs, but can also affect other parts of the body. Most infections show no symptoms, in which case it is known as latent tuberculosis.",
+    "causes": ["Severe Thinness", "Mild Thinness"]
+  },
+  {
+    "disease": "Cardiovascular disease",
+    "description": "Cardiovascular disease (CVD) is a class of diseases that involve the heart or blood vessels. CVD includes coronary artery diseases (CAD) such as angina and myocardial infarction (commonly known as a heart attack). Other CVDs include stroke, heart failure, hypertensive heart disease, rheumatic heart disease, cardiomyopathy, abnormal heart rhythms, congenital heart disease, valvular heart disease, carditis, aortic aneurysms, peripheral artery disease, thromboembolic disease, and venous thrombosis.",
+    "causes": ["Obese Class II", "Obese Class I", "Obese Class III", "Overweight"]
+  },
+  {
+    "disease": "Cancer",
+    "description": "Cancer is a group of diseases involving abnormal cell growth with the potential to invade or spread to other parts of the body. These contrast with benign tumors, which do not spread.[8] Possible signs and symptoms include a lump, abnormal bleeding, prolonged cough, unexplained weight loss, and a change in bowel movements. While these symptoms may indicate cancer, they can also have other causes. Over 100 types of cancers affect humans.",
+    "causes": ["Mild Thinness", "Moderate Thinness", "Severe Thinness", "Overweight"]
+  },
+  {
+    "disease": "Depression",
+    "description": "Depression (major depressive disorder) is a common and serious medical illness that negatively affects how you feel, the way you think and how you act. Fortunately, it is also treatable. Depression causes feelings of sadness and/or a loss of interest in activities once enjoyed. It can lead to a variety of emotional and physical problems and can decrease a person’s ability to function at work and at home.",
+    "causes": ["Overweight", "Obese Class I", "Obese Class II", "Obese Class III", "Severe Thinness", "isDrinker"]
+  }
+]
