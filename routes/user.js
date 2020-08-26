@@ -43,6 +43,7 @@ const sinDictionary = {
 }
 router.put('/edit', (req, res, next) => {
     //const userId = req.session.currentUser._id;
+    console.log(req.body);
     const { _id } = req.session.currentUser;
     const { firstName, lastName, gender, image, height, weight, age, isDrinker, isSmoker, country, description } = req.body;
 
@@ -77,7 +78,7 @@ router.put('/edit', (req, res, next) => {
             const yearsRemainingTotal = yearsRemaining + badHabitsYears + healthYears;
 
 
-            let now = new Date().getTime();
+            /* let now = new Date().getTime();
 
             let future = Math.floor(yearsRemainingTotal * 31536000000);
             let countDownDate = future - now;
@@ -88,7 +89,7 @@ router.put('/edit', (req, res, next) => {
 
             console.log({ yearsRemaining, healthYears, badHabitsYears, yearsRemainingTotal, health, bmi, countDownDate, now, future });
             console.log(`${days} d ${hours} h ${minutes} m ${seconds} s`);
-            console.log(userDisease);
+            console.log(userDisease); */
 
             const hasSins = generateSins(isSmoker, isDrinker, health)
             console.log(hasSins);
