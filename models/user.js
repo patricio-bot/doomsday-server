@@ -20,7 +20,9 @@ const userSchema = new Schema({
   weight: { type: Number, default: 0 },
   height: { type: Number, default: 0 },
   country: { type: String, default: '' },
-  hasSins: []
+  hasSins: [],
+  hasTasks: [],
+  completedProfile: { type: Boolean, default: false }
 }, {
   timestamps: {
     createdAt: 'created_at',
