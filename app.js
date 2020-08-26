@@ -33,12 +33,8 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-<<<<<<< HEAD
-    origin: [process.env.PUBLIC_DOMAIN, "https://doomsday-client.web.app"],
-=======
     origin: [process.env.PUBLIC_DOMAIN, 'https://doomsday-app.herokuapp.com'],
 
->>>>>>> develop
   })
 );
 // app.use((req, res, next) => {
