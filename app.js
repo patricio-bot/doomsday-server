@@ -75,17 +75,17 @@ app.use("/api/auth", auth);
 app.use('/api/user', userRouter);
 app.use('/api/task', taskRouter);
 
-
-// ERROR HANDLING
-// catch 404 and forward to error handler
-app.use((req, res, next) => {
-  res.status(404).json({ code: "not found" });
-});
 // ROUTE FOR SERVING REACT APP (index.html)
 app.use((req, res, next) => {
   // If no routes match, send them the React HTML.
   res.sendFile(__dirname + "/public/index.html");
 });
+// ERROR HANDLING
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  res.status(404).json({ code: "not found" });
+});
+
 app.use((err, req, res, next) => {
   // always log the error
   console.error("ERROR", req.method, req.path, err);
