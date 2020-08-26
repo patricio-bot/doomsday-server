@@ -45,6 +45,12 @@ router.put('/edit', (req, res, next) => {
     //const userId = req.session.currentUser._id;
     const { _id } = req.session.currentUser;
     const { firstName, lastName, gender, image, height, weight, age, isDrinker, isSmoker, country, description } = req.body;
+
+    if (!age || !weight || !height) {
+        next(createError(400))
+        return
+    }
+
     axios({
         "method": "GET",
         "url": "https://fitness-calculator.p.rapidapi.com/bmi",
@@ -86,7 +92,11 @@ router.put('/edit', (req, res, next) => {
 
             const hasSins = generateSins(isSmoker, isDrinker, health)
             console.log(hasSins);
-            User.findByIdAndUpdate(_id, { yearsRemaining: yearsRemainingTotal, firstName, lastName, gender, image, height, weight, age, isDrinker, isSmoker, country, description, health, hasSins }, { new: true })
+
+
+
+            User.findByIdAndUpdate(_id, { yearsRemaining: yearsRemainingTotal, firstName, lastName, gender, image, height, weight, age, isDrinker, isSmoker, country, description, health, hasSins, completedProfile: true }, { new: true })
+
                 .then((userUpdated) => {
                     res.status(200).json(userUpdated)
                 })
@@ -121,11 +131,11 @@ router.get('/:id', (req, res, next) => {
             next(createError(error));
         });
 });
-/* router.put('/edit', (req, res, next) => {
+router.put('/tasks', (req, res, next) => {
     const { _id } = req.session.currentUser;
-    const { firstName, lastName, gender, image, height, weight, age, isDrinker, isSmoker, country, description } = req.body;
+    const { tasks } = req.body;
 
-    User.findByIdAndUpdate(_id, { firstName, lastName, gender, image, height, weight, age, isDrinker, isSmoker, country, description }, { new: true })
+    User.findByIdAndUpdate(_id, { hasTasks: tasks }, { new: true })
         .then((userUpdated) => {
             console.log('user updated------>', userUpdated);
             req.session.currentUser = userUpdated;
@@ -134,6 +144,6 @@ router.get('/:id', (req, res, next) => {
         .catch(error => {
             next(error);
         });
-}); */
+});
 
 module.exports = router;
