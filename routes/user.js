@@ -41,7 +41,7 @@ const sinDictionary = {
     'Underweight': -6
 
 }
-router.put('/edit', (req, res, next) => {
+router.put('/edit', isLoggedIn(), (req, res, next) => {
     //const userId = req.session.currentUser._id;
     console.log(req.body);
     const { _id } = req.session.currentUser;
@@ -132,7 +132,7 @@ router.get('/:id', (req, res, next) => {
             next(createError(error));
         });
 });
-router.put('/tasks', (req, res, next) => {
+router.put('/tasks', isLoggedIn(), (req, res, next) => {
     const { _id } = req.session.currentUser;
     const { tasks } = req.body;
 
