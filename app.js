@@ -33,7 +33,12 @@ const app = express();
 app.use(
   cors({
     credentials: true,
+<<<<<<< HEAD
     origin: [process.env.PUBLIC_DOMAIN, "https://doomsday-client.web.app"],
+=======
+    origin: [process.env.PUBLIC_DOMAIN, 'https://doomsday-app.herokuapp.com'],
+
+>>>>>>> develop
   })
 );
 // app.use((req, res, next) => {
@@ -67,10 +72,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// ROUTE FOR SERVING REACT APP (index.html)
+app.use((req, res, next) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/public/index.html");
+});
+
 // ROUTER MIDDLEWARE
-app.use("/auth", auth);
-app.use('/user', userRouter);
-app.use('/task', taskRouter);
+app.use("/api/auth", auth);
+app.use('/api/user', userRouter);
+app.use('/api/task', taskRouter);
+
+
 // ERROR HANDLING
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
